@@ -6,9 +6,9 @@ Examples are given in the `examples/` subdirectory.
 
 Installation: see INSTALL file
 
-Documentation: http://ocaml.pbwiki.com/Ocamlscript
+Documentation: https://github.com/ocaml-community/ocamlscript/wiki
 
-Primary download site: http://mjambon.com/ocamlscript.html
+Primary download site: https://github.com/ocaml-community/ocamlscript
 
 Authors: David Mentre and Martin Jambon
 
