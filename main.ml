@@ -251,6 +251,7 @@ let write_header ~pos ~source ~source_option ~verbose ~prog_file lines =
   fprintf oc "\
 #%i %S;;
 (* Opam installations of findlib place topfind in a different directory *)
+#directory \"+compiler-libs\";;
 let () =
   try Topdirs.dir_directory (Sys.getenv \"OCAML_TOPLEVEL_PATH\")
   with Not_found -> ()
