@@ -97,5 +97,5 @@ To not use hidden files for the executable is advised to help differentiate it
 from malware.
 
 I preferred to avoid /tmp for compilation for some subtle reasons, including
-that sensitive scripts would not accidentally scape filesystem security on the
+that sensitive scripts would not accidentally escape filesystem security on the
 script, think /root/bin/ping-secret-api.ml
