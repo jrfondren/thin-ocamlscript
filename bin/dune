@@ -1,0 +1,4 @@
+(executable
+ (public_name thin-ocamlscript)
+ (name main)
+ (libraries unix thin_ocamlscript))

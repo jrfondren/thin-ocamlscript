@@ -1,0 +1,3 @@
+(library
+ (name thin_ocamlscript)
+ (libraries unix))
