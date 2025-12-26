@@ -1,3 +1,5 @@
+EDIT: actually, I'm going to support legacy ocamlscript instead of breaking completely with it. The thin-ocamlscript variant below that relies on ocamlfind will remain the default behavior.
+
 thin-ocamlscript lets you use OCaml as a scripting language while only paying
 the compilation cost once per modification of a script, and while getting
 dependencies and preprossing through ocamlfind.
