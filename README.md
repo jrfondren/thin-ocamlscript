@@ -16,18 +16,28 @@ For a shorter name like "ocamlscript", you can rename the binary.
 
 # installing
 
+with opam:
 ```
-$ opam pin add thin-ocamlscript https://github.com/jrfondren/thin-ocamlscript.git
+opam pin add thin-ocamlscript https://github.com/jrfondren/thin-ocamlscript.git
+```
 
-$ dune install --release
+cloning this repo and using dune:
+```
+git clone https://github.com/jrfondren/thin-ocamlscript && cd thin-ocamlscript
+dune install --release
+```
 
-$ dune build --release
-$ mv _build/default/bin/main.exe ~/bin/ocamlscript
+using dune and manually placing the binary:
+```
+dune build --release
+mv _build/default/bin/main.exe ~/bin/ocamlscript
+```
 
-$ cat lib/script.ml > oscript.ml  # manual, single-file 
-$ sed 1d bin/main.ml >> oscript.ml  # skip 'open'
-$ vi oscript.ml                   # make it print "recompiling! ..."
-$ ocamlfind ocamlopt -O3 -package unix -linkpkg -o oscript oscript.ml
+catting a single .ml together and building that with ocamlfind:
+```
+cat lib/script.ml > oscript.ml
+sed 1d bin/main.ml >> oscript.ml
+ocamlfind ocamlopt -O3 -package unix -linkpkg -o oscript oscript.ml
 ```
 
 # examples
