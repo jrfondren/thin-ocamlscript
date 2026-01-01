@@ -1,5 +1,3 @@
-EDIT: actually, I'm going to support legacy ocamlscript instead of breaking completely with it. The thin-ocamlscript variant below that relies on ocamlfind will remain the default behavior.
-
 thin-ocamlscript lets you use OCaml as a scripting language while only paying
 the compilation cost once per modification of a script, and while getting
 dependencies and preprossing through ocamlfind.
@@ -14,15 +12,17 @@ For altered behavior (e.g., tmp files in /tmp, Unix and Ezcurl loaded by
 default, the -vm or -debug flags from ocamlscript), the expectation is that
 you'll use a fork.
 
+For a shorter name like "ocamlscript", you can rename the binary.
+
 # installing
 
 ```
-$ opam install thin-ocamlscript   # with opam
+$ opam pin add thin-ocamlscript https://github.com/jrfondren/thin-ocamlscript.git
 
-$ dune install --release          # with dune
+$ dune install --release
 
-$ dune build --release            # dune, manual install
-$ mv _build/default/bin/main.exe ~/bin/thin-ocamlscript
+$ dune build --release
+$ mv _build/default/bin/main.exe ~/bin/ocamlscript
 
 $ cat lib/script.ml > oscript.ml  # manual, single-file 
 $ sed 1d bin/main.ml >> oscript.ml  # skip 'open'
@@ -30,7 +30,7 @@ $ vi oscript.ml                   # make it print "recompiling! ..."
 $ ocamlfind ocamlopt -O3 -package unix -linkpkg -o oscript oscript.ml
 ```
 
-# very brief examples
+# examples
 
 ```ocaml
 #! /usr/bin/env -S thin-ocamlscript -package unix -linkpkg --
@@ -80,12 +80,6 @@ The exename is compiled if not newer than the script. The tmpname is deleted
 after compilation. There is no protection against you doing something placing a
 hello.ml script next to a hello.tmp.ml that you would regret losing.
 
-# defects
-
-1. Editors do not understand that the shebang line affects the environment of the script, and will e.g. complain about an "Unbound module Unix" in the first example. For this reason I think a 'dune-ocamlscript' (ocamlscript-dune?) that unpacks/repacks a script from an ephemeral dune repo would make for a generally more pleasant experience.
-
-2. The name's too long. It should probably also be 'ocamlscript-thin' but to me that suggests a relationship with ocamlscript.
-
 # design
 
 A temporary file is required by ocamlc/ocamlopt objecting to #! lines.
@@ -104,7 +98,7 @@ script, think /root/bin/ping-secret-api.ml
 
 # editing with Merlin
 
-This generated code, which calls :MerlinUse on every package in
+This generated vimscript, which calls :MerlinUse on every package in
 first line, improves the editing experience a great deal:
 
 ```
